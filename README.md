@@ -35,15 +35,15 @@ npm run e2e
 npm test
 ```
 
-# Deploy Stuff
+## Deploy Stuff
 Every merge within `master` branch will deploy a new website version - no need to commit `/dist/` folder.
 This site is hosted by [Netlify](https://www.netlify.com/) - the `/dist/` folder is generated automatically on each push.
 
-# Todos
+## Todos
 - Improvement UI
 - Improvement UX
 - Write MORE Tests
 
-# License
+## License
 MIT License © João Paulo C.M. Fricks
 Made with ❤ in Brazil
