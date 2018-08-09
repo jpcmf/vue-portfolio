@@ -15,7 +15,7 @@
         <ul class="copyright">
           <li>© JPCMF</li>
           <li>UI Designer and Front-end Developer</li>
-          <!-- <li>Design: <a href="https://html5up.net">HTML5 UP</a></li> -->
+          <li>Template Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a></li>
           <!-- <li>Demo Images: <a href="https://unsplash.com">Unsplash</a></li> -->
         </ul>
       </div>
