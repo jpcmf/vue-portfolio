@@ -81,6 +81,7 @@
           this.subject = null;
           this.name = null;
           this.emailFrom = null;
+          this.message = null;
           this.$validator.reset()
         },
 
@@ -95,12 +96,15 @@
             .then((result) => {
               if(!result) {
                 console.log('Please correct all error!')
-                console.log(this)
+                // console.log(this)
                 return;
               }
               console.log('Submitting message...')
               this.$http.post('https://www.joaolabs.tk/sendmail.php', formdata)
-              // this.$validator.reset()
+                .then((response) => {
+                  this.reset()
+                  // console.log(response)
+                })
             })
             .catch(() => {
 

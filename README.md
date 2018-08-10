@@ -43,6 +43,7 @@ This site is hosted by [Netlify](https://www.netlify.com/) - the `/dist/` folder
 - Improvement UI
 - Improvement UX
 - Write MORE Tests
+- Add message after send contact
 
 ## License
 MIT License © João Paulo C.M. Fricks
