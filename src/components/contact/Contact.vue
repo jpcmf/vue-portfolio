@@ -5,11 +5,11 @@
         <section>
           <form @submit.prevent="processForm" method="post" action="#" id="contact-form">
             <div class="fields">
-              <div class="field">
+              <!-- <div class="field">
                 <label for="name">Subject</label>
                 <input type="text" name="subject" id="subject" v-model="subject" v-validate data-vv-rules="required|min:3|max:30">
                 <span class="error" v-show="errors.has('subject')">{{ errors.first('subject') }}</span>
-              </div>
+              </div> -->
               <div class="field half">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" v-model="name" v-validate data-vv-rules="required|min:3|max:30">
@@ -69,7 +69,7 @@
 
       data() {
         return {
-          subject: '',
+          // subject: '',
           name: '',
           emailFrom: '',
           message: ''
@@ -78,7 +78,7 @@
 
       methods: {
         reset: function() {
-          this.subject = null;
+          // this.subject = null;
           this.name = null;
           this.emailFrom = null;
           this.message = null;
@@ -87,7 +87,7 @@
 
         processForm: function() {
           var formdata = new FormData();
-          formdata.append('subject', this.subject);
+          // formdata.append('subject', this.subject);
           formdata.append('name', this.name);
           formdata.append('emailFrom', this.emailFrom);
           formdata.append('message', this.message);
