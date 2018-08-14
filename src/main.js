@@ -7,6 +7,7 @@ import { routes } from './routes'
 import './directives/Transform'
 import VeeValidate from 'vee-validate'
 import VueScrollTo from 'vue-scrollto'
+import Meta from 'vue-meta'
 
 // import 'bootstrap/scss/bootstrap.scss';
 // import './assets/sass/variables.scss';
@@ -22,6 +23,7 @@ Vue.use(VueScrollTo, {
   duration: 600,
   easing: 'ease'
 })
+Vue.use(Meta)
 
 const router = new VueRouter({
   routes: routes,

@@ -19,7 +19,12 @@
 </template>
 
 <script>
-export default {}
+export default {
+  metaInfo: {
+    title: 'About',
+    titleTemplate: '%s | JPCMF UI Designer and Front-end Developer'
+  }
+}
 </script>
 
 <style lang="scss"></style>

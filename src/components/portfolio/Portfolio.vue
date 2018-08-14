@@ -8,7 +8,6 @@
         </header>
         <p>{{ foto.descricaofull }}</p>
         <span class="image main">
-          <!-- <img src="/src/assets/images/about.jpg" alt=""> -->
           <img-responsive v-show="foto.url" :url="foto.url" :titulo="foto.titulo"/>
         </span>
         <ul class="actions">
@@ -28,6 +27,10 @@ import Pic from '../../domain/pic/Pic.js';
 import PicService from '../../domain/pic/PicService.js'
 
 export default {
+  metaInfo: {
+    title: 'Portfolio',
+    titleTemplate: '%s | JPCMF UI Designer and Front-end Developer'
+  },
 
   components: {
     'img-responsive': ImgResponsive,
