@@ -5,6 +5,6 @@
 
 [[redirects]]
   from = "/sendmail.php"
-  to = "/sendmail.php"
+  to = "https://www.joaolabs.tk/sendmail.php"
   status = 301
   force = false
