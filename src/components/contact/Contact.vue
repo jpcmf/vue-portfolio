@@ -4,7 +4,7 @@
       <div class="inner">
         <section>
           <!-- <form @submit.prevent="processForm" method="post" action="#" id="contact-form"> -->
-          <form method="post" action="#" id="contact-form" netlify>
+          <form name="contact" method="post" netlify>
             <div class="fields">
               <!-- <div class="field">
                 <label for="name">Subject</label>
