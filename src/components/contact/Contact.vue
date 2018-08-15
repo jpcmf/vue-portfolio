@@ -13,17 +13,17 @@
               </div> -->
               <div class="field half">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" v-model="name" v-validate data-vv-rules="required|min:3|max:30">
+                <input type="text" name="name" id="name" v-model="form.name" v-validate data-vv-rules="required|min:3|max:30">
                 <span class="error" v-show="errors.has('name')">{{ errors.first('name') }}</span>
               </div>
               <div class="field half">
                 <label for="email">Email</label>
-                <input type="text" name="emailFrom" id="emailFrom" v-model="emailFrom" v-validate data-vv-rules="required|email">
-                <span class="error" v-show="errors.has('emailFrom')">{{ errors.first('emailFrom') }}</span>
+                <input type="text" name="email" id="email" v-model="form.email" v-validate data-vv-rules="required|email">
+                <span class="error" v-show="errors.has('email')">{{ errors.first('email') }}</span>
               </div>
               <div class="field">
                 <label for="message">Message</label>
-                <textarea name="message" id="message" rows="6" v-model="message" v-validate data-vv-rules="required|min:10|max:200"></textarea>
+                <textarea name="message" id="message" rows="6" v-model="form.message" v-validate data-vv-rules="required|min:10|max:200"></textarea>
                 <span class="error" v-show="errors.has('message')">{{ errors.first('message') }}</span>
               </div>
             </div>
@@ -71,10 +71,15 @@
 
       data() {
         return {
+          form: {
+            name: '',
+            email: '',
+            message: ''
+          }
           // subject: '',
-          name: '',
-          emailFrom: '',
-          message: ''
+          // name: '',
+          // emailFrom: '',
+          // message: ''
         }
       },
 
