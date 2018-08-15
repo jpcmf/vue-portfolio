@@ -21,7 +21,8 @@ Vue.use(VueRouter)
 Vue.use(VeeValidate)
 Vue.use(VueScrollTo, {
   duration: 600,
-  easing: 'ease'
+  easing: 'ease',
+  offset: -50
 })
 Vue.use(Meta)
 
@@ -36,5 +37,11 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   router: router,
-  render: h => h(App)
+  render: h => h(App),
+  mounted() {
+    //do something after mounting vue instance
+    // You'll need this for renderAfterDocumentEvent.
+    document.dispatchEvent(new Event('render-event'))
+
+  }
 })
