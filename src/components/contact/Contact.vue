@@ -3,8 +3,7 @@
     <section id="contact">
       <div class="inner">
         <section>
-          <!-- <form @submit.prevent="processForm" method="post" action="#" id="contact-form"> -->
-          <form name="contact" method="post" data-netlify="true">
+          <form @submit.prevent="processForm" method="post" action="#" id="contact-form">
             <div class="fields">
               <!-- <div class="field">
                 <label for="name">Subject</label>
@@ -13,23 +12,22 @@
               </div> -->
               <div class="field half">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" v-model="form.name" v-validate data-vv-rules="required|min:3|max:30">
+                <input type="text" name="name" id="name" v-model="name" v-validate data-vv-rules="required|min:3|max:30">
                 <span class="error" v-show="errors.has('name')">{{ errors.first('name') }}</span>
               </div>
               <div class="field half">
                 <label for="email">Email</label>
-                <input type="text" name="email" id="email" v-model="form.email" v-validate data-vv-rules="required|email">
-                <span class="error" v-show="errors.has('email')">{{ errors.first('email') }}</span>
+                <input type="text" name="emailFrom" id="emailFrom" v-model="emailFrom" v-validate data-vv-rules="required|email">
+                <span class="error" v-show="errors.has('emailFrom')">{{ errors.first('emailFrom') }}</span>
               </div>
               <div class="field">
                 <label for="message">Message</label>
-                <textarea name="message" id="message" rows="6" v-model="form.message" v-validate data-vv-rules="required|min:10|max:200"></textarea>
+                <textarea name="message" id="message" rows="6" v-model="message" v-validate data-vv-rules="required|min:10|max:200"></textarea>
                 <span class="error" v-show="errors.has('message')">{{ errors.first('message') }}</span>
               </div>
             </div>
             <ul class="actions">
-              <!-- <li><input type="submit" value="Send Message" class="primary"></li> -->
-              <li><input type="submit" value="Send Message" class="primary" @click.prevent="handleSubmit"></li>
+              <li><input type="submit" value="Send Message" class="primary"></li>
               <li><input type="reset" value="Clear"></li>
             </ul>
           </form>
@@ -71,51 +69,14 @@
 
       data() {
         return {
-          form: {
-            name: '',
-            email: '',
-            message: ''
-          }
           // subject: '',
-          // name: '',
-          // emailFrom: '',
-          // message: ''
+          name: '',
+          emailFrom: '',
+          message: ''
         }
       },
 
       methods: {
-        encode(data) {
-          return Object.keys(data)
-            .map(
-              key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
-            )
-            .join('&')
-        },
-        handleSubmit() {
-          this.$validator.validateAll()
-            .then((result) => {
-              if(!result) {
-                console.log('Please correct all error!')
-                // console.log(this)
-                return;
-              }
-              console.log('Submitting message...')
-              fetch('/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: this.encode({ 'form-name': 'contact', ...this.form })
-              })
-              .then(() => {
-                alert('Success!')
-                this.reset()
-              })
-              .catch(error => alert(error));
-            })
-            // .catch(() => {
-            //
-            // });
-        },
-
         reset: function() {
           // this.subject = null;
           this.name = null;
@@ -125,29 +86,29 @@
         },
 
         processForm: function() {
-          // var formdata = new FormData();
-          // // formdata.append('subject', this.subject);
-          // formdata.append('name', this.name);
-          // formdata.append('emailFrom', this.emailFrom);
-          // formdata.append('message', this.message);
-          //
-          // this.$validator.validateAll()
-          //   .then((result) => {
-          //     if(!result) {
-          //       console.log('Please correct all error!')
-          //       // console.log(this)
-          //       return;
-          //     }
-          //     console.log('Submitting message...')
-          //     this.$http.post('https://www.joaolabs.tk/sendmail.php', formdata)
-          //       .then((response) => {
-          //         this.reset()
-          //         // console.log(response)
-          //       })
-          //   })
-          //   .catch(() => {
-          //
-          //   });
+          var formdata = new FormData();
+          // formdata.append('subject', this.subject);
+          formdata.append('name', this.name);
+          formdata.append('emailFrom', this.emailFrom);
+          formdata.append('message', this.message);
+
+          this.$validator.validateAll()
+            .then((result) => {
+              if(!result) {
+                console.log('Please correct all error!')
+                // console.log(this)
+                return;
+              }
+              console.log('Submitting message...')
+              this.$http.post('https://www.joaolabs.tk/sendmail.php', formdata)
+                .then((response) => {
+                  this.reset()
+                  // console.log(response)
+                })
+            })
+            .catch(() => {
+
+            });
 
           // this.$validator
           //   .validateAll()
