@@ -71,15 +71,10 @@
 
       data() {
         return {
-          form: {
-            name: '',
-            emailFrom: '',
-            message: ''
-          }
           // subject: '',
-          // name: '',
-          // emailFrom: '',
-          // message: ''
+          name: '',
+          emailFrom: '',
+          message: ''
         }
       },
 
