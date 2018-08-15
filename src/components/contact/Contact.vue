@@ -31,6 +31,9 @@
               <li><input type="reset" value="Clear"></li>
             </ul>
           </form>
+          <div v-show="formResponse">
+            Message submitted successfully!
+          </div>
         </section>
         <section class="split">
           <section>
@@ -72,7 +75,8 @@
           // subject: '',
           name: '',
           emailFrom: '',
-          message: ''
+          message: '',
+          formResponse: false
         }
       },
 
@@ -103,6 +107,7 @@
               this.$http.post('https://www.joaolabs.tk/sendmail.php', formdata)
                 .then((response) => {
                   this.reset()
+                  this.formResponse = true
                   // console.log(response)
                 })
             })
