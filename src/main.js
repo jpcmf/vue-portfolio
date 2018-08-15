@@ -38,10 +38,9 @@ new Vue({
   el: '#app',
   router: router,
   render: h => h(App),
-  mounted() {
+  // mounted() {
     //do something after mounting vue instance
     // You'll need this for renderAfterDocumentEvent.
-    document.dispatchEvent(new Event('render-event'))
-
-  }
+    // document.dispatchEvent(new Event('render-event'))
+  // }
 })
