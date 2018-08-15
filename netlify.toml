@@ -1,12 +1,10 @@
-# [[redirects]]
-#   from = "/*"
-#   to = "/index.html"
-#   status = 200
-#
-# [[redirects]]
-#   from = "/sendmail.php"
-#   to = "https://www.joaolabs.tk/sendmail.php"
-#   status = 200
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
-/* /index.html 200
-/https://www.joaolabs.tk/sendmail.php /sendmail.php 200
+[[redirects]]
+  from = "/sendmail.php"
+  to = "https://www.joaolabs.tk/sendmail.php"
+  status = 200
+  force = true
