@@ -3,8 +3,8 @@
   to = "/index.html"
   status = 200
 
-[[redirects]]
-  from = "/sendmail.php"
-  to = "https://www.joaolabs.tk/sendmail.php"
-  status = 200
-  force = true
+# [[redirects]]
+#   from = "/sendmail.php"
+#   to = "https://www.joaolabs.tk/sendmail.php"
+#   status = 200
+#   force = true
