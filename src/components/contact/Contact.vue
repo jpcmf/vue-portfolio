@@ -55,7 +55,7 @@
               <span class="icon alt fa-home"></span>
               <h3>Address</h3>
               <span>Avenida dos Estados<br>
-                Curitiba, PR 539<br>
+                Curitiba, PR 80610-040<br>
                 Brazil</span>
               </div>
             </section>
