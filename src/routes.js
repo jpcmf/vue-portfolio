@@ -12,6 +12,7 @@ import Portfolio from './components/portfolio/Portfolio.vue'
 export const routes = [
   { path: '', name: 'home', component: Home, title: 'Home', menu: true},
   { path: '/about', name: 'about', component: About, title: 'About', menu: true},
+  { path: '/resume', beforeEnter() { location.href = 'https://www.google.com' }, title: 'Resume', menu: true},
   { path: '/portfolio/:id', name: 'portfolio', component: Portfolio, title: 'Portfolio', menu: false},
   { path: '/register/', name: 'register', component: Register, title: 'Register', menu: false},
   { path: '/register/:id', name: 'change', component: Register, title: 'Register', menu: false},
