@@ -47,5 +47,5 @@ This site is hosted by [Netlify](https://www.netlify.com/) - the `/dist/` folder
 - ~~Add vue-meta for metatags~~
 
 ## License
-MIT License © João Paulo C.M. Fricks
+MIT License © João Paulo C M Fricks
 Made with ❤ in Brazil
