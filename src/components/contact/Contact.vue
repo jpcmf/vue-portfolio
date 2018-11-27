@@ -17,8 +17,8 @@
               </div>
               <div class="field half">
                 <label for="email">Email</label>
-                <input type="text" name="emailFrom" id="emailFrom" v-model="emailFrom" v-validate data-vv-rules="required|email">
-                <span class="error" v-show="errors.has('emailFrom')">{{ errors.first('emailFrom') }}</span>
+                <input type="text" name="email" id="email" v-model="email" v-validate data-vv-rules="required|email">
+                <span class="error" v-show="errors.has('email')">{{ errors.first('email') }}</span>
               </div>
               <div class="field">
                 <label for="message">Message</label>
@@ -74,7 +74,7 @@
         return {
           // subject: '',
           name: '',
-          emailFrom: '',
+          email: '',
           message: '',
           formResponse: false
         }
@@ -84,7 +84,7 @@
         reset: function() {
           // this.subject = null;
           this.name = null;
-          this.emailFrom = null;
+          this.email = null;
           this.message = null;
           this.$validator.reset()
         },
@@ -93,7 +93,7 @@
           var formdata = new FormData();
           // formdata.append('subject', this.subject);
           formdata.append('name', this.name);
-          formdata.append('emailFrom', this.emailFrom);
+          formdata.append('emailFrom', this.email);
           formdata.append('message', this.message);
 
           this.$validator.validateAll()
