@@ -104,7 +104,7 @@
                 return;
               }
               console.log('Submitting message...')
-              this.$http.post('https://www.joaolabs.tk/sendmail.php', formdata)
+              this.$http.post('https://compacto-records.000webhostapp.com/sendmail/sendmail.php', formdata)
                 .then((response) => {
                   this.reset()
                   this.formResponse = true
