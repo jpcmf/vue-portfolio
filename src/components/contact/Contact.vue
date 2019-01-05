@@ -3,13 +3,8 @@
     <section id="contact">
       <div class="inner">
         <section>
-          <form id="contact-form" @submit.prevent="processForm" name="contato" method="post" netlify data-netlify="true" data-netlify-honeypot="bot-field">
+          <form id="contact-form" v-on:submit.prevent="processForm" name="contato" method="post">
             <div class="fields">
-              <!-- <div class="field">
-                <label for="name">Subject</label>
-                <input type="text" name="subject" id="subject" v-model="subject" v-validate data-vv-rules="required|min:3|max:30">
-                <span class="error" v-show="errors.has('subject')">{{ errors.first('subject') }}</span>
-              </div> -->
               <div class="field half">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" v-model="name" v-validate data-vv-rules="required|min:3|max:30">
@@ -40,7 +35,7 @@
             <div class="contact-method">
               <span class="icon alt fa-envelope"></span>
               <h3>Email</h3>
-              <a href="#">hire@jpcmf.com</a>
+              <a href="mailto:jpfricks@gmail.com">jpfricks@gmail.com</a>
             </div>
           </section>
           <section>
@@ -54,90 +49,71 @@
             <div class="contact-method">
               <span class="icon alt fa-home"></span>
               <h3>Address</h3>
-              <span>Avenida dos Estados<br>
+              <span>
+                Avenida dos Estados<br>
                 Curitiba, PR 80610-040<br>
-                Brazil</span>
-              </div>
-            </section>
+                Brazil
+              </span>
+            </div>
           </section>
-        </div>
-      </section>
+        </section>
+      </div>
+    </section>
+  </div>
+</template>
 
-    </div>
+<script>
+export default {
 
-  </template>
-
-  <script>
-    export default {
-
-      data() {
-        return {
-          // subject: '',
-          name: '',
-          email: '',
-          message: '',
-          formResponse: false
-        }
-      },
-
-      methods: {
-        reset() {
-          // this.subject = null;
-          this.name = null;
-          this.email = null;
-          this.message = null;
-          this.$validator.reset();
-        },
-
-        processForm() {
-          var formdata = new FormData();
-
-          // formdata.append('subject', this.subject);
-          formdata.append('name', this.name);
-          formdata.append('emailFrom', this.email);
-          formdata.append('message', this.message);
-
-          this.$validator.validateAll()
-            .then((result) => {
-              if(!result) {
-                console.log('Please correct all error!')
-                return;
-              }
-              console.log('Submitting message...')
-              // this.$http.post('https://www.compactorecords.com.br/sendmail/sendmail.php', formdata)
-              this.$http.post('https://compacto-records.000webhostapp.com/sendmail/sendmail.php', formdata)
-                .then((response) => {
-                  console.log(response);
-                  this.reset();
-                  this.formResponse = true;
-                })
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-
-          // this.$validator
-          //   .validateAll()
-          //   .then(success => {
-          //     if (success) {
-          //       this.service
-          //         .register(this.foto)
-          //         .then(() => {
-          //           if (this.id) this.$router.push({name: 'home'})
-          //           this.foto = new Pic()
-          //           this.$validator.reset()
-          //         }, err => console.log(err))
-          //     }
-          //   })
-
-        }
-      }
+  data() {
+    return {
+      name: '',
+      email: '',
+      message: '',
+      formResponse: false,
     }
-  </script>
+  },
 
-  <style scoped lang="scss">
-    .error {
-      color: coral;
-      font-size: 12px;
+  methods: {
+    reset() {
+      this.name = null;
+      this.email = null;
+      this.message = null;
+      this.$validator.reset();
+    },
+
+    processForm() {
+      var formdata = new FormData();
+
+      formdata.append('name', this.name);
+      formdata.append('emailFrom', this.email);
+      formdata.append('message', this.message);
+
+      this.$validator.validateAll()
+      .then((result) => {
+        if(!result) {
+          console.log('Please correct all error!');
+          return;
+        }
+        console.log('Submitting message...');
+        this.$http.post('https://compacto-records.000webhostapp.com/sendmail/sendmail.php', formdata)
+        .then((response) => {
+          console.log(response);
+          this.reset();
+          this.formResponse = true;
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     }
-  </style>
+  }
+}
+</script>
+
+<style scoped lang="scss">
+  .error {
+    color: coral;
+    font-size: 12px;
+  }
+</style>
