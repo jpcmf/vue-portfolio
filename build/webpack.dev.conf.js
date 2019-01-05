@@ -10,6 +10,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
+// const PrerenderSPAPlugin = require('prerender-spa-plugin')
+// const Renderer = PrerenderSPAPlugin.PuppeteerRenderer
+
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
@@ -45,6 +48,20 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
+    // prerendering
+    // new PrerenderSPAPlugin({
+    //   staticDir: path.join(__dirname, '../dist'),
+    //   routes: [ '/', '/about', '/resume', '/portfolio', '/register' ],
+    
+    //   renderer: new Renderer({
+    //     // timeout: 0,
+    //     // maxConcurrentRoutes: 1,
+    //     renderAfterTime: 5000,
+    //     headless: false,
+    //     renderAfterDocumentEvent: 'render-event'
+    //   })
+    // }),
+
     new webpack.ProvidePlugin({
       $: 'jquery/dist/jquery.js',
       jQuery: 'jquery/dist/jquery.js'

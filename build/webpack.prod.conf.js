@@ -10,8 +10,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-// const PrerenderSPAPlugin = require('prerender-spa-plugin')
 
+// const PrerenderSPAPlugin = require('prerender-spa-plugin')
+// const Renderer = PrerenderSPAPlugin.PuppeteerRenderer
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -134,15 +135,16 @@ const webpackConfig = merge(baseWebpackConfig, {
     // prerendering
     // new PrerenderSPAPlugin({
     //   staticDir: path.join(__dirname, '../dist'),
-    //   routes: [ '/', '/about' ],
-    //
-    //   renderer: new PrerenderSPAPlugin.PuppeteerRenderer({
-    //     inject: {
-    //       foo: 'bar'
-    //     },
+    //   routes: [ '/', '/about', '/portfolio', '/register' ],
+    
+    //   renderer: new Renderer({
+    //     // timeout: 0,
+    //     // maxConcurrentRoutes: 1,
+    //     renderAfterTime: 5000,
+    //     headless: false,
     //     renderAfterDocumentEvent: 'render-event'
     //   })
-    // })
+    // }),
   ]
 })
 

@@ -3,7 +3,7 @@
     <section id="contact">
       <div class="inner">
         <section>
-          <form @submit.prevent="processForm" method="post" action="#" id="contact-form">
+          <form id="contact-form" @submit.prevent="processForm" name="contato" method="post" netlify data-netlify="true" data-netlify-honeypot="bot-field">
             <div class="fields">
               <!-- <div class="field">
                 <label for="name">Subject</label>
@@ -81,16 +81,17 @@
       },
 
       methods: {
-        reset: function() {
+        reset() {
           // this.subject = null;
           this.name = null;
           this.email = null;
           this.message = null;
-          this.$validator.reset()
+          this.$validator.reset();
         },
 
-        processForm: function() {
+        processForm() {
           var formdata = new FormData();
+
           // formdata.append('subject', this.subject);
           formdata.append('name', this.name);
           formdata.append('emailFrom', this.email);
@@ -100,19 +101,19 @@
             .then((result) => {
               if(!result) {
                 console.log('Please correct all error!')
-                // console.log(this)
                 return;
               }
               console.log('Submitting message...')
+              // this.$http.post('https://www.compactorecords.com.br/sendmail/sendmail.php', formdata)
               this.$http.post('https://compacto-records.000webhostapp.com/sendmail/sendmail.php', formdata)
                 .then((response) => {
-                  this.reset()
-                  this.formResponse = true
-                  // console.log(response)
+                  console.log(response);
+                  this.reset();
+                  this.formResponse = true;
                 })
             })
-            .catch(() => {
-
+            .catch((err) => {
+              console.log(err);
             });
 
           // this.$validator
