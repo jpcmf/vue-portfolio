@@ -91,20 +91,26 @@ export default {
 
       this.$validator.validateAll()
       .then((result) => {
-        if(!result) {
-          console.log('Please correct all error!');
+        if(!result){
+          console.log('Please correct all errors...');
           return;
         }
+      
         console.log('Submitting message...');
         this.$http.post('https://compacto-records.000webhostapp.com/sendmail/sendmail.php', formdata)
         .then((response) => {
+          console.log('Success...');
           console.log(response);
           this.reset();
           this.formResponse = true;
         })
+        .catch((response) => {
+          console.log('Error...');
+          console.log(response);
+        })
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+      
       });
     }
   }
