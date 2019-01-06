@@ -6,7 +6,7 @@
 export default {
   props: [
     'url',
-    'titulo'
+    'titulo',
   ],
 
   data() {
@@ -20,7 +20,6 @@ export default {
 <style lang="scss">
 
   .img-responsive {
-    // height: 150px;
     object-fit: cover;
     width: 100%;
   }

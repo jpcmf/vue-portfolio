@@ -1,78 +1,84 @@
 <template lang="html">
   <div>
-
     <div id="main">
-      <section id="three">
+      <section class="preview">
         <div class="inner">
-          <header class="major">
-            <h2>{{ foto.titulo }}</h2>
-          </header>
-          <p>{{ foto.descricaofull }}</p>
-          <span class="image main">
-            <!-- <img src="/src/assets/images/about.jpg" alt=""> -->
-            <img-responsive v-show="foto.url" :url="foto.url" :titulo="foto.titulo"/>
-          </span>
-          <ul class="actions">
-            <li><a :href="foto.link" target="_blank" class="button next">View project</a></li>
-            <li><router-link :to="{ name: 'home' }"><my-button label="back" type="button"/></router-link></li>
-          </ul>
+          <h2 class="preview__title">Preview</h2>
+          <div class="preview__inner">
+            <header class="major">
+              <h2>{{ foto.titulo }}</h2>
+            </header>
+            <p>{{ foto.descricaofull }}</p>
+            <span class="image main">
+              <!-- <img src="/src/assets/images/about.jpg" alt=""> -->
+              <img-responsive v-show="foto.url" :url="foto.url" :titulo="foto.titulo" />
+            </span>
+            <ul class="actions">
+              <li><a :href="foto.link" target="_blank" class="button next">View project</a></li>
+              <li>
+                <router-link :to="{ name: 'home' }">
+                  <my-button label="back" type="button" />
+                </router-link>
+              </li>
+            </ul>
+          </div>   
+        </div>
+      </section>
+      <section>
+        <div class="inner">
+          <h3 v-if="foto._id" class="centered">Modify item</h3>
+          <h3 v-else class="centered">Add item</h3>
+          <form @submit.prevent="record()">
+            <div class="fields">
+              <div class="field">
+                <label for="titulo">Title of project</label>
+                <!-- <input id="titulo" autocomplete="off"
+                  @input="foto.titulo = $event.target.value" :value="foto.titulo"> -->
+                <input type="text" class="form-control" name="titulo" v-model="foto.titulo" v-validate data-vv-rules="required|min:3|max:30" data-vv-as="título" id="titulo" autocomplete="off">
+                <span class="error" v-show="errors.has('titulo')">{{ errors.first('titulo') }}</span>
+              </div>
+      
+              <div class="field">
+                <label for="url">Image url of project</label>
+                <!-- <input id="url" autocomplete="off" v-model.lazy="foto.url"> -->
+                <input type="text" class="form-control" name="url" v-model="foto.url" v-validate data-vv-rules="required" id="url" autocomplete="off">
+                <span class="error" v-show="errors.has('url')">{{ errors.first('url') }}</span>
+                <div class="preview__image centered">
+                  <img-responsive v-show="foto.url" :url="foto.url" :titulo="foto.titulo"/>
+                </div>
+              </div>
+      
+              <div class="field">
+                <label for="url">Link url of project</label>
+                <!-- <input id="url" autocomplete="off" v-model.lazy="foto.url"> -->
+                <input type="text" class="form-control" name="link" v-model="foto.link" v-validate data-vv-rules="required" id="url" autocomplete="off">
+                <span class="error" v-show="errors.has('link')">{{ errors.first('link') }}</span>
+              </div>
+      
+              <div class="field">
+                <label for="descricao">Short description</label>
+                <textarea class="form-control" id="descricao" autocomplete="off" v-model="foto.descricao"></textarea>
+              </div>
+      
+              <div class="field">
+                <label for="descricao">Full description</label>
+                <textarea class="form-control" id="descricaofull" autocomplete="off" v-model="foto.descricaofull"></textarea>
+              </div>
+            </div>
+            <ul class="actions">
+              <li><my-button label="GRAVAR" type="submit"/></li>
+              <li><router-link :to="{ name: 'home' }"><my-button label="VOLTAR" type="button"/></router-link></li>
+              <li><my-button
+                type="button"
+                label="remover"
+                @buttonActive="remove(foto)"
+                :confirm="true"
+                stylecss="danger"/></li>
+            </ul>
+          </form>
         </div>
       </section>
     </div>
-
-    <h1 class="centered">Cadastro</h1>
-    <h2 class="centered">{{ foto.titulo }}</h2>
-    <h3 class="centered">{{ foto.descricao }}</h3>
-
-    <h3 v-if="foto._id" class="centered">Modify</h3>
-    <h3 v-else class="centered">Add</h3>
-
-    <form @submit.prevent="record()">
-      <div class="fields">
-        <div class="field">
-          <label for="titulo">Title of project</label>
-          <!-- <input id="titulo" autocomplete="off"
-            @input="foto.titulo = $event.target.value" :value="foto.titulo"> -->
-          <input type="text" class="form-control" name="titulo" v-model="foto.titulo" v-validate data-vv-rules="required|min:3|max:30" data-vv-as="título" id="titulo" autocomplete="off">
-          <span class="error" v-show="errors.has('titulo')">{{ errors.first('titulo') }}</span>
-        </div>
-
-        <div class="field">
-          <label for="url">Image url of project</label>
-          <!-- <input id="url" autocomplete="off" v-model.lazy="foto.url"> -->
-          <input type="text" class="form-control" name="url" v-model="foto.url" v-validate data-vv-rules="required" id="url" autocomplete="off">
-          <span class="error" v-show="errors.has('url')">{{ errors.first('url') }}</span>
-          <img-responsive v-show="foto.url" :url="foto.url" :titulo="foto.titulo"/>
-        </div>
-
-        <div class="field">
-          <label for="url">Link url of project</label>
-          <!-- <input id="url" autocomplete="off" v-model.lazy="foto.url"> -->
-          <input type="text" class="form-control" name="link" v-model="foto.link" v-validate data-vv-rules="required" id="url" autocomplete="off">
-          <span class="error" v-show="errors.has('link')">{{ errors.first('link') }}</span>
-        </div>
-
-        <div class="field">
-          <label for="descricao">Short description</label>
-          <textarea class="form-control" id="descricao" autocomplete="off" v-model="foto.descricao"></textarea>
-        </div>
-
-        <div class="field">
-          <label for="descricao">Full description</label>
-          <textarea class="form-control" id="descricaofull" autocomplete="off" v-model="foto.descricaofull"></textarea>
-        </div>
-      </div>
-      <ul class="actions">
-        <li><my-button label="GRAVAR" type="submit"/></li>
-        <li><router-link :to="{ name: 'home' }"><my-button label="VOLTAR" type="button"/></router-link></li>
-        <li><my-button
-          type="button"
-          label="remover"
-          @buttonActive="remove(foto)"
-          :confirm="true"
-          stylecss="danger"/></li>
-      </ul>
-    </form>
   </div>
 </template>
 
@@ -170,16 +176,36 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  .preview__inner {
+    border: dotted 3px #fff;
+    padding: 50px;
+  }
+
+  .preview__title {
+    text-align: center;
+  }
+
+  .preview__image {
+    margin-top: 30px;
+
+    img {
+      width: 50%;
+    }
+  }
 
   form,
   .fire__crud {
-    max-width: 700px;
+    /* max-width: 1200px; */
     margin: 0 auto;
   }
 
   .error {
     color: coral;
     font-size: 12px;
+  }
+
+  .centered {
+    text-align: center;
   }
 
 </style>
