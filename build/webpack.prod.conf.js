@@ -125,6 +125,16 @@ const webpackConfig = merge(baseWebpackConfig, {
       minChunks: 3
     }),
 
+    // pwa
+    new SWPrecacheWebpackPlugin({
+      cacheId: 'my-pwa-vue-app',
+      filename: 'service-worker-cache.js',
+      staticFileGlobs: ['dist/**/*.{js,css,png,txt,map,html}', '/'],
+      minify: true,
+      stripPrefix: 'dist/',
+      dontCacheBustUrlsMatching: /\.\w{6}\./
+    }),
+
     // copy custom static assets
     new CopyWebpackPlugin([
       {
@@ -147,15 +157,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     //     renderAfterDocumentEvent: 'render-event'
     //   })
     // }),
-
-    new SWPrecacheWebpackPlugin({
-      cacheId: 'my-pwa-vue-app',
-      filename: 'service-worker-cache.js',
-      staticFileGlobs: ['dist/**/*.{js,css}', '/'],
-      minify: true,
-      stripPrefix: 'dist/',
-      dontCacheBustUrlsMatching: /\.\w{6}\./
-    }),
   ]
 })
 
