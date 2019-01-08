@@ -14,8 +14,15 @@
     <meta property="og:description" content="Welcome to my Portfolio. I am a UI Designer and Front-end Developer based in Curitiba, Brazil.">
   </head>
   <body class="is-preload">
+    <noscript>To run this application, JavaScript is required to be enabled.</noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-    <noscript>To run this application, JavaScript is required to be enabled.</noscript>
   </body>
+  <script>
+    (function () {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/service-worker.js');
+        }
+      })();
+  </script>
 </html>
