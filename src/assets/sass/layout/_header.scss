@@ -39,10 +39,12 @@
 			strong {
 				@include vendor('transition', (
 					'background-color #{_duration(transition)} ease-in-out',
-					'color #{_duration(transition)} ease-in-out'
+          'color #{_duration(transition)} ease-in-out',
+          'border #{_duration(transition)} ease-in-out'
 				));
-				background-color: _palette(fg-bold);
-				color: _palette(bg);
+				// background-color: _palette(fg-bold);
+				border: solid 2px _palette(fg);
+				color: _palette(fg);
 				display: inline-block;
 				line-height: 1.65em;
 				margin-right: 0.325em;
@@ -50,8 +52,12 @@
 			}
 
 			&:hover {
+				// strong {
+				// 	background-color: _palette(highlight);
+				// }
 				strong {
-					background-color: _palette(highlight);
+					border-color: _palette(highlight);
+					color: _palette(highlight);
 				}
 			}
 
