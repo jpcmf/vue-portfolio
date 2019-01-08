@@ -14,6 +14,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 // const PrerenderSPAPlugin = require('prerender-spa-plugin')
 // const Renderer = PrerenderSPAPlugin.PuppeteerRenderer
 
+const SWPrecacheWebpackPlugin = require ('sw-precache-webpack-plugin')
+
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : require('../config/prod.env')
@@ -145,6 +147,15 @@ const webpackConfig = merge(baseWebpackConfig, {
     //     renderAfterDocumentEvent: 'render-event'
     //   })
     // }),
+
+    new SWPrecacheWebpackPlugin({
+      cacheId: 'my-pwa-vue-app',
+      filename: 'service-worker-cache.js',
+      staticFileGlobs: ['dist/**/*.{js,css}', '/'],
+      minify: true,
+      stripPrefix: 'dist/',
+      dontCacheBustUrlsMatching: /\.\w{6}\./
+    }),
   ]
 })
 
