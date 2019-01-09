@@ -29,14 +29,11 @@ Vue.use(Meta)
 const isProd = process.env.NODE_ENV === 'production'
 Vue.use(VueAnalytics, {
   id: 'UA-1624952-19',
-  router,
-  autoTracking: {
-    page: true,
-  },
-  debug: {
-    enabled: !isProd,
-    sendHitTask: isProd
-  }
+  router
+  // debug: {
+  //   enabled: !isProd,
+  //   sendHitTask: isProd
+  // }
 })
 
 const router = new VueRouter({
