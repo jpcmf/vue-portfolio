@@ -21,19 +21,19 @@ Vue.use(VeeValidate)
 Vue.use(VueScrollTo, {
   duration: 600,
   easing: 'ease',
-  offset: -50
+  offset: -50,
 })
 Vue.use(Meta)
 
 // google analytics
 const isProd = process.env.NODE_ENV === 'production'
 Vue.use(VueAnalytics, {
-  id: 'UA-1624952-19',
-  router
-  // debug: {
-  //   enabled: !isProd,
-  //   sendHitTask: isProd
-  // }
+  id: 'UA-1624952-20',
+  router,
+  debug: {
+    enabled: !isProd,
+    // sendHitTask: isProd
+  }
 })
 
 const router = new VueRouter({
