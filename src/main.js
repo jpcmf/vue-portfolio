@@ -25,19 +25,19 @@ Vue.use(VueScrollTo, {
 })
 Vue.use(Meta)
 
-// google analytics
-const isProd = process.env.NODE_ENV === 'production'
-Vue.use(VueAnalytics, {
-  id: 'UA-1624952-20',
-  router,
-})
-
 const router = new VueRouter({
   routes: routes,
   mode: 'history',
   scrollBehavior(to, from, savedPosition) {
     return { x: 0, y: 0 }
   }
+})
+
+// google analytics
+const isProd = process.env.NODE_ENV === 'production'
+Vue.use(VueAnalytics, {
+  id: 'UA-1624952-20',
+  router,
 })
 
 new Vue({
