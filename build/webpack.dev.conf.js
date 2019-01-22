@@ -54,7 +54,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     // new PrerenderSPAPlugin({
     //   staticDir: path.join(__dirname, '../dist'),
     //   routes: [ '/', '/about', '/resume', '/portfolio', '/register' ],
-    
+
     //   renderer: new Renderer({
     //     // timeout: 0,
     //     // maxConcurrentRoutes: 1,
@@ -88,7 +88,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new SWPrecacheWebpackPlugin({
       cacheId: 'my-pwa-vue-app',
       filename: 'service-worker-cache.js',
-      staticFileGlobs: ['dist/**/*.{js,css,png,txt,map,html}', '/'],
+      staticFileGlobs: ['dist/**/*.{js,css,jpg,png,txt,map,html,eot,woff2,ttf,woff}', '/'],
       minify: true,
       stripPrefix: 'dist/',
       dontCacheBustUrlsMatching: /\.\w{6}\./
