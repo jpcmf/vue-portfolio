@@ -10,7 +10,7 @@
             <img-responsive :url="foto.url" :titulo="foto.titulo"/>
           </span>
           <my-tiles :titulo="foto.titulo" :descricao="foto.descricao"/>
-          <router-link :to="{ name: 'portfolio', params: {id: foto._id} }" class="link primary">
+          <router-link :to="{ name: 'portfolio', params: {id: foto._id} }" class="link primary" aria-label="Portfolio">
             <!-- <my-button type="button" label="alterar"/> -->
           </router-link>
         </article>
