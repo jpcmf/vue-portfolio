@@ -8,9 +8,13 @@
           <header class="major">
             <h1>About</h1>
           </header>
-          <!-- <div class="image about"></div> -->
-          <span class="image main"><img src="../../assets/about.jpg" alt=""></span>
-          <p>I am a UI Designer and Front-end Developer from Brazil based in Curitiba. I like working as freelancer, solving problems with Design and making great ideas happen. I love sharing the knowledge that I have gained from my experience with other people. When I am not developing websites I like to produce electronic music and play some records. You can find me on Twitter (<a href="https://www.twitter.com/jpcmf80" target="_blank">@jpcmf80</a>) and, if you're interested in my professional experience, please have a look at my links or drop me a message.</p>
+
+          <div class="content">
+            <!-- <div class="image about"></div> -->
+            <span class="image main"><img src="../../assets/about-2019.jpg" alt=""></span>
+            <p>I am a UI Designer and Front-end Developer from Brazil based in Curitiba. I like working as freelancer, solving problems with Design and making great ideas happen. I love sharing the knowledge that I have gained from my experience with other people. When I am not developing websites I like to produce electronic music and play some records. You can find me on Twitter (<a href="https://www.twitter.com/jpcmf80" target="_blank">@jpcmf80</a>) and, if you're interested in my professional experience, please have a look at my links or drop me a message.</p>
+          </div>
+
         </div>
       </section>
 
@@ -27,4 +31,20 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+  .content {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+
+    span {
+      margin-right: 2.5em;
+      width: 30%;
+    }
+
+    p {
+      margin: 0;
+      width: 50%;
+    }
+  }
+</style>
