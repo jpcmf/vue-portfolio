@@ -29,7 +29,7 @@ import PicService from '../../domain/pic/PicService.js'
 export default {
   metaInfo: {
     title: 'Portfolio',
-    titleTemplate: '%s | JPCMF UI Designer and Front-end Developer'
+    titleTemplate: '%s | JPCMF Front-end Developer and UI Designer'
   },
 
   components: {
