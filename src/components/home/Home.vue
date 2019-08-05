@@ -31,7 +31,7 @@ import PicService from '../../domain/pic/PicService.js'
 export default {
   metaInfo: {
     title: 'Home',
-    titleTemplate: '%s | JPCMF UI Designer and Front-end Developer',
+    titleTemplate: '%s | JPCMF Front-end Developer and UI Designer'
     // meta: [
     //   {property: 'og:title', content: 'JPCMF | UI Designer and Front-end Developer'},
     //   {property: 'og:site_name', content: 'JPCMF | UI Designer and Front-end Developer'},
