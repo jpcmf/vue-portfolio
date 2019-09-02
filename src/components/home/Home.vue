@@ -4,11 +4,13 @@
     <div id="main">
 
       <div v-show="showLoad" class="load">
-        <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring" style="background:0 0">
-          <circle cx="50" cy="50" fill="none" stroke-linecap="round" r="40" stroke-width="4" stroke="#fff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(233.386 50 50)">
-            <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"/>
-          </circle>
-        </svg>
+        <div class="load-inner">
+          <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring" style="background:0 0">
+            <circle cx="50" cy="50" fill="none" stroke-linecap="round" r="40" stroke-width="4" stroke="#fff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(233.386 50 50)">
+              <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
       </div>
 
       <section id="one" class="tiles">
@@ -63,7 +65,7 @@ export default {
       fotos: [],
       filter: '',
       messages: '',
-      showLoad: true,
+      showLoad: false,
     }
   },
 
@@ -95,7 +97,7 @@ export default {
           // this.messages = 'Can not remove the picture'
           this.messages = err.message
 
-          // console.log(err);
+          console.log(err);
         })
     }
   },
@@ -105,8 +107,10 @@ export default {
     this.service = new PicService(this.$resource)
     this.service.list()
       .then((fotos) => {
-        this.fotos = fotos
-        this.showLoad = false
+        setTimeout(() => {
+          this.fotos = fotos
+          this.showLoad = false
+        }, 1500)
 
         // console.log('fotos..', fotos);
       },
@@ -118,21 +122,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#main {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  padding: 150px 0;
-  position: relative;
-}
-
-.tiles {
-  width: 100%;
-}
-
 .load {
-  padding: 30px 0;
-  position: absolute;
+  padding: 50px 0;
+  transition: all ease 300ms;
+  width: 100%;
   z-index: 100;
+
+  .load-inner {
+    text-align: center;
+  }
 }
 </style>
