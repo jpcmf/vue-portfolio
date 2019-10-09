@@ -26,7 +26,31 @@
 				text-align: center;
 				width: 2em;
 			}
-		}
+    }
+
+    &--circle {
+      background-color: _palette(fg-bold);
+      border-radius: 100%;
+      display: inline-block;
+      height: 2em;
+      line-height: 2em;
+      text-align: center;
+      width: 2em;
+
+      svg {
+        color: _palette(bg);
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: _palette(accent1);
+
+        svg {
+          color: _palette(bg);
+        }
+      }
+    }
 	}
 
 	a.icon {

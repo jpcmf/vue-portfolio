@@ -33,6 +33,12 @@
               <span class="label">Twitter</span>
             </a>
           </li>
+          <li>
+            <a class="icon alt icon--circle" href="https://www.strava.com/athletes/3224735" target="_blank" rel="noopener" aria-label="Strava">
+              <span class="label">Strava</span>
+              <font-awesome-icon :icon="['fab', 'strava']" />
+            </a>
+          </li>
         </ul>
         <ul class="copyright">
           <li>© JPCMF</li>
@@ -45,7 +51,9 @@
 </template>
 
 <script>
-export default {}
+export default {
+
+}
 </script>
 
 <style lang="scss"></style>

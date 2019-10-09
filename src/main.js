@@ -1,13 +1,21 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueResource from 'vue-resource'
+
 import VueRouter from 'vue-router'
 import { routes } from './routes'
-import './directives/Transform'
+
+import Meta from 'vue-meta'
 import VeeValidate from 'vee-validate'
 import VueScrollTo from 'vue-scrollto'
-import Meta from 'vue-meta'
 import VueAnalytics from 'vue-analytics'
+
+import './directives/Transform'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+// import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faStrava } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // import 'bootstrap/scss/bootstrap.scss';
 // import './assets/sass/variables.scss';
@@ -39,6 +47,12 @@ Vue.use(VueAnalytics, {
   id: 'UA-1624952-20',
   router,
 })
+
+// fontawesome
+library.add(faStrava)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+Vue.config.productionTip = false
 
 new Vue({
   el: '#app',
