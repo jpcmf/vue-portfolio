@@ -2,8 +2,18 @@
   <div class="centered">
     <banner-home></banner-home>
     <div id="main">
-      <section id="one" class="tiles">
 
+      <div v-show="showLoad" class="load">
+        <div class="load-inner">
+          <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring" style="background:0 0">
+            <circle cx="50" cy="50" fill="none" stroke-linecap="round" r="40" stroke-width="4" stroke="#fff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(233.386 50 50)">
+              <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+      </div>
+
+      <section id="one" class="tiles">
         <article v-for="foto of fotosFiltered" v-bind:style="{ backgroundImage: 'url(' + foto.url + ')' }">
           <span class="image" style="display: none;">
             <!-- <img src="images/pic01.jpg" alt=""> -->
@@ -31,7 +41,7 @@ import PicService from '../../domain/pic/PicService.js'
 export default {
   metaInfo: {
     title: 'Home',
-    titleTemplate: '%s | JPCMF UI Designer and Front-end Developer',
+    titleTemplate: '%s | JPCMF Front-end Developer and UI Designer'
     // meta: [
     //   {property: 'og:title', content: 'JPCMF | UI Designer and Front-end Developer'},
     //   {property: 'og:site_name', content: 'JPCMF | UI Designer and Front-end Developer'},
@@ -54,7 +64,8 @@ export default {
       title: 'Releases',
       fotos: [],
       filter: '',
-      messages: ''
+      messages: '',
+      showLoad: false,
     }
   },
 
@@ -78,70 +89,47 @@ export default {
         .then(() => {
           let index = this.fotos.indexOf(foto) // position of pic in array
           this.fotos.splice(index, 1) // the instruction change array
-          console.log(index);
           this.messages = 'Picture removed'
+
+          // console.log(index);
         },
         err => {
           // this.messages = 'Can not remove the picture'
-          console.log(err);
           this.messages = err.message
+
+          console.log(err);
         })
-
-      // this.resource
-      //   .delete({ id: foto._id })
-      //   .then(() => {
-      //     let index = this.fotos.indexOf(foto) // position of pic in array
-      //     this.fotos.splice(index, 1) // the instruction change array
-      //     console.log(index);
-      //     this.message = 'Picture removed'
-      //   },
-      //   err => {
-      //     this.message = 'Can not remove the picture'
-      //     console.log(err);
-      //   })
-
-      // this.$http
-      //   .delete('v1/fotos/' + foto._id)
-      //   .then(() => {
-      //     let index = this.fotos.indexOf(foto) // position of pic in array
-      //     this.fotos.splice(index, 1) // the instruction change array
-      //     console.log(index);
-      //     this.message = 'Picture removed'
-      //   },
-      //   err => {
-      //     this.message = 'Can not remove the picture'
-      //     console.log(err);
-      //   })
     }
   },
 
   created() {
-
+    this.showLoad = true
     this.service = new PicService(this.$resource)
-    this.service
-      .list()
-      .then(fotos => this.fotos = fotos, err => {
+    this.service.list()
+      .then((fotos) => {
+        setTimeout(() => {
+          this.fotos = fotos
+          this.showLoad = false
+        }, 1500)
+
+        // console.log('fotos..', fotos);
+      },
+      err => {
         this.messages = err.message
       })
-
-    // this.resource = this.$resource('v1/fotos{/id}')
-    // this.resource
-    //   .query()
-    //   .then(res => res.json())
-    //   .then(fotos => this.fotos = fotos, err => console.log(err))
-
-    // this.$http.get('v1/fotos')
-    //   .then(res => res.json())
-    //   .then(fotos => this.fotos = fotos, err => console.log(err))
-
-    // fetch('https://api-portfolioapi.wedeploy.io')
-    //   .then(response => response.json())
-    //   .then(json => {
-    //     this.json = json
-    //     console.log(json)
-    //   })
   }
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.load {
+  padding: 50px 0;
+  transition: all ease 300ms;
+  width: 100%;
+  z-index: 100;
+
+  .load-inner {
+    text-align: center;
+  }
+}
+</style>

@@ -15,7 +15,7 @@ import 'jquery/dist/jquery.js'
 import './assets/js/app.js'
 
 Vue.use(VueResource)
-Vue.http.options.root = 'https://api-api2018.wedeploy.io'
+Vue.http.options.root = 'https://jpcmf-portfolio-api.herokuapp.com/'
 Vue.use(VueRouter)
 Vue.use(VeeValidate)
 Vue.use(VueScrollTo, {
